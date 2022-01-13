@@ -4,8 +4,8 @@ import './ImageLink.css';
 const ImageLink = ({onInputChange, onButtonSubmit}) => {
     return(
         <div>
-            <p className="f3">
-                {'Masukkan gambar dan deteksi wajah'}
+            <p className="f3 white">
+                {'Masukkan URL Gambar'}
             </p>
             <div className="center">
                 <div className="box pa4 br3 shadow-5">
