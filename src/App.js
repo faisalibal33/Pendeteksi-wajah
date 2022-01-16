@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import Navigation from './component/Navigation/Navigation';
 import Signin from './component/Signin/Signin';
+import Register from './component/Register/Register';
 import Logo from './component/Logo/Logo';
 import ImageLink from './component/ImageLink/ImageLink';
 import FaceRecognition from './component/FaceRecognition/FaceRecognition';
 import Rank from './component/Rank/Rank';
 import Particles from "react-tsparticles";
+
 
 class App extends Component{
   constructor() {
@@ -14,6 +16,8 @@ class App extends Component{
     this.state ={
       input: '',
       imageUrl: '',
+      route: 'signin',
+      navRoute: false,
     }
   }
  
@@ -24,6 +28,16 @@ class App extends Component{
 
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input})
+  }
+
+  onRouteChange = (route) => {
+    if(route === 'signout'){
+      this.setState({navRoute: false})
+    }
+    else if(route === 'home'){
+      this.setState({navRoute: true})
+    }
+    this.setState({route: route})
   }
   render(){
     return(
@@ -654,12 +668,18 @@ class App extends Component{
           }
         }}
       />
-        <Navigation/>
-        <Signin />
-        <Logo/>
-        <Rank/>
-        <ImageLink onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
-        <FaceRecognition imageUrl={this.state.imageUrl}/>
+        <Navigation navRoute={this.state.navRoute} onRouteChange = {this.onRouteChange}/> {
+          this.state.route === 'home' ? 
+          <div>       
+            <Logo/>
+            <Rank/>
+            <ImageLink onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
+            <FaceRecognition imageUrl={this.state.imageUrl}/>
+          </div>
+          : (this.state.route === 'signin') ?
+          <Signin onRouteChange = {this.onRouteChange} />:
+          <Register onRouteChange ={this.onRouteChange} />
+        }
       </div>
     );
   }    
