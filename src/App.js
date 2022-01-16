@@ -31,7 +31,7 @@ class App extends Component{
   }
 
   onRouteChange = (route) => {
-    if(route === 'signout'){
+    if(route === 'signin'){
       this.setState({navRoute: false})
     }
     else if(route === 'home'){
@@ -676,9 +676,10 @@ class App extends Component{
             <ImageLink onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
             <FaceRecognition imageUrl={this.state.imageUrl}/>
           </div>
-          : (this.state.route === 'signin') ?
-          <Signin onRouteChange = {this.onRouteChange} />:
-          <Register onRouteChange ={this.onRouteChange} />
+          : (this.state.route === 'signin') ? 
+            <Signin onRouteChange = {this.onRouteChange} />:
+            <Register onRouteChange = {this.onRouteChange}/>
+            
         }
       </div>
     );

@@ -4,7 +4,7 @@ const Navigation = ({onRouteChange, navRoute}) => {
     if(navRoute) {
         return(
             <nav style={{display: "flex", justifyContent: 'flex-end'}}>
-                <p onClick= {() => onRouteChange ('signout')} className="f3 link dim white underline pointer pa3">Sign Out</p>
+                <p onClick= {() => onRouteChange ('signin')} className="f3 link dim white underline pointer pa3">Sign Out</p>
             </nav>
         );
     }
